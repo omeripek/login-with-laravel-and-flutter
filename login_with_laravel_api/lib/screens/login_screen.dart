@@ -33,10 +33,13 @@ class _LoginScreenState extends State<LoginScreen> {
       await Provider.of<Auth>(context, listen: false).login(
           credential: {'email': _email.text, 'password': _password.text});
 
+      // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
+          // ignore: use_build_context_synchronously
           customSnackBar(context, 'successfully logged in', false));
+      // ignore: use_build_context_synchronously
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: ((context) => HomePage())));
+          context, MaterialPageRoute(builder: ((context) => const HomePage())));
     } else {
       ScaffoldMessenger.of(context)
           .showSnackBar(customSnackBar(context, 'faild to login ', true));
@@ -50,7 +53,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Padding(
           padding: const EdgeInsets.only(top: 20),
           child: Column(children: [
-            Text('Login Here',
+            const Text('Login Here',
                 style: TextStyle(
                     color: Colors.indigo,
                     fontSize: 30,
